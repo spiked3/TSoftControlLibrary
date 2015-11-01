@@ -1,0 +1,43 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication1"
+        xmlns:TSoftControlLibrary="clr-namespace:TSoftControlLibrary;assembly=TSoftControlLibrary" x:Class="WpfApplication1.MainWindow"
+        mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TSoftControlLibrary:RotateUserControl x:Name="FromAngle" Grid.Row="0" Grid.Column="0" Margin="32" />
+        <TSoftControlLibrary:RotateUserControl x:Name="ToAngle" Grid.Row="0" Grid.Column="2" Margin="32" />
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" Margin="8" >
+            <TextBlock Text="From" FontWeight="Bold" />
+            <TextBlock Text="{Binding Angle,ElementName=FromAngle,FallbackValue=fromAngle,StringFormat=F2}" />            
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="2" Margin="8" >
+            <TextBlock Text="To" FontWeight="Bold" />
+            <TextBlock Text="{Binding Angle,ElementName=ToAngle,FallbackValue=fromAngle,StringFormat=F2}" />            
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="8" >
+            <TextBlock Text="AngleBetween" FontWeight="Bold" />
+            <TextBlock Text="{Binding AngleBetween,FallbackValue=angleBetween}" />
+            <TextBlock Text="TurnDirection" FontWeight="Bold" />
+            <TextBlock Text="{Binding TurnDirection,FallbackValue=turnDirection}" />
+            <TextBlock Text="DegreesToTurn" FontWeight="Bold" />
+            <TextBlock Text="{Binding DegreesToTurn,FallbackValue=degreesToTurn}" />
+        </StackPanel>
+
+    </Grid>
+</Window>
